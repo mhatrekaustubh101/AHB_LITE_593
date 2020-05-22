@@ -4,8 +4,8 @@ import Definitions::*;
 class env;
 	gen g;
 	driver d;
-	//monitor m;
-	//scoreboard scr;
+	monitor m;
+	scoreboard scr;
   
 	mailbox mbx=new();
 	mailbox mbx2=new();
@@ -19,14 +19,14 @@ class env;
 	task run();
 		g=new(mbx);
 		d=new(mbx,vif);
-		//m=new(vif,mbx2);
-		//scr=new(mbx2,vif);
+		m=new(vif,mbx2);
+		scr=new(mbx2,vif);
 		
 		fork
 			g.run();
 			d.run();
-			//m.run();
-			//scr.run();
+			m.run();
+			scr.run();
 		join
 	
 	endtask
