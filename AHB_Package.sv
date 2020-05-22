@@ -83,9 +83,13 @@ OKAY  = 'b0,
 ERROR = 'b1
 } Response_t;
  
- `include "transaction.sv"
+
+
+`include "transaction.sv"
 `include "generator.sv"
 `include "driver.sv"
+`include "monitor.sv"
+`include "scoreboard.sv"
 `include "env.sv"
 
 endpackage
