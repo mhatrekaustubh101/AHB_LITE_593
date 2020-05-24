@@ -15,7 +15,7 @@ class txn;
 	rand logic  [2:0]	HSIZE;
 	rand logic	[2:0]	HBURST;
 	logic		[1:0]	HTRANS;
-	logic        	HWRITE; 
+	rand logic        	HWRITE; 
 	rand logic			HMASTLOCK; 
 	rand logic			HREADY;
 	rand logic   [3:0]	HPROT;
