@@ -10,11 +10,11 @@ class gen;
   endfunction
   
   task run();
-    repeat(100)
+    repeat(10000)
     begin
 		pkt=new();
 		assert(pkt.randomize);
-		pkt.print("Generator data and address ");
+		//pkt.print("Generator data and address ");
 		mbx.put(pkt);
     end
   endtask
