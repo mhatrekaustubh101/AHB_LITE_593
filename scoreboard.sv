@@ -7,6 +7,7 @@ class scoreboard;
     virtual inf vif;
 	
 	logic [ADDRWIDTH - 1 : 0] wrap_address, waddress;
+	logic [DATAWIDTH - 1 : 0] wrap_data, wrap_write_data;
 	int addr_incr;
 	
 	localparam MEMDEPTH = 2 ** 8;
@@ -48,6 +49,8 @@ class scoreboard;
 					else if(((t.HBURST == WRAP4) | (t.HBURST == WRAP8) | (t.HBURST == WRAP16)) && (t.HTRANS == NONSEQ))
 					begin
 						wrap_address = t.HADDR;
+						wrap_write_data = wrap_data;
+						wrap_data = t.HWDATA;
 						addr_incr = 0;
 					end
 					
@@ -55,23 +58,26 @@ class scoreboard;
 					else if(((t.HBURST == WRAP4) | (t.HBURST == WRAP8) | (t.HBURST == WRAP16)) && (t.HTRANS == SEQ))
 					begin
 						waddress = wrap_address;
+						wrap_write_data = wrap_data;
+						wrap_data = t.HWDATA;
+						
 						if(t.HWRITE == 1'b1)
 						begin
 							case(t.HBURST)
 								WRAP4	:begin
 											waddress[1:0] = wrap_address[1:0] + addr_incr;
 											addr_incr = addr_incr + 1;
-											memory[waddress] = t.HWDATA;
+											memory[waddress] = wrap_write_data;
 										 end
 								WRAP8	:begin
 											waddress[2:0] = wrap_address[2:0] + addr_incr;
 											addr_incr = addr_incr + 1;
-											memory[waddress] = t.HWDATA;
+											memory[waddress] = wrap_write_data;
 										 end
 								WRAP16	:begin
 											waddress[3:0] = wrap_address[3:0] + addr_incr;
 											addr_incr = addr_incr + 1;
-											memory[waddress] = t.HWDATA;
+											memory[waddress] = wrap_write_data;
 										 end
 							
 							endcase
