@@ -24,12 +24,12 @@ class coverage_ahb;
 	covergroup cg_ahb;
 
 //------------------------------------------BASIC COVERAGE----------------------------------------------//	
-		slave_response: coverpoint HRESP {
+		slave_response: coverpoint HRESP {	//OKAY or ERROR response
 			bins OKAY	= {1'b0};
 			bins ERROR	= {1'b1};
 			}
 			
-		burst: coverpoint HBURST {
+		burst: coverpoint HBURST {	//BURST transfers
 			bins SINGLE	= {3'b000};
 			bins INCR	= {3'b001};
 			bins WRAP4	= {3'b010};
@@ -40,49 +40,49 @@ class coverage_ahb;
 			bins INCR16	= {3'b111};
 			}
 			
-		transfer_type: coverpoint HTRANS {
+		transfer_type: coverpoint HTRANS {	//transfer types
 			bins IDLE	= {2'b00};
 			bins BUSY	= {2'b01};
 			bins NONSEQ	= {2'b10};
 			bins SEQ	= {2'b11};
 			}
 			
-		burst_nonseq_seq: coverpoint HTRANS {
+		burst_nonseq_seq: coverpoint HTRANS {	//burst sequence except SINGLE
 			bins NONSEQ_SEQ			= {NONSEQ => SEQ};
 			illegal_bins SEQ_NONSEQ	= {SEQ => NONSEQ};
 			}
 			
-		slave_select: coverpoint HSEL {
+		slave_select: coverpoint HSEL {		//slave select based on the DECODER
 			bins SLAVE_0	= {1'b0};
 			bins SLAVE_1	= {1'b1};
 			}
 			
-		ready_master_slave: coverpoint HREADY {		
+		ready_master_slave: coverpoint HREADY {		//master slave ready for data transfer
 			bins READY	= {1'b1};
 			bins WAIT	= {1'b0};
 			}
 			
-		reset: coverpoint HRESETn {
+		reset: coverpoint HRESETn {		//reset signal ACTIVE LOW
 			bins RESET_asserted		= {1'b0};
 			bins RESET_deasserted	= {1'b1};
 			}
 			
-		data_size : coverpoint HSIZE {		//
+		data_size : coverpoint HSIZE {		//size of a transfer
 			bins BYTE		= {3'b000};
 			bins HALF_WORD	= {3'b001};
 			bins WORD		= {3'b010};
 			ignore_bins SIZE_INVALID ={[3'b011:3'b111]};
 			}
 			
-		master_read_data: coverpoint HRDATA {
+		master_read_data: coverpoint HRDATA {	//data for read operation
 			bins READ_DATA	= (0:255) iff (HWRITE==0);
 			}
 			
-		master_broadcast_data: coverpoint HWDATA {
+		master_broadcast_data: coverpoint HWDATA {	//data for write operation
 			bins WRITE_DATA	= (0:255) iff (HWRITE==1);
 			}
 			
-		data_operations: coverpoint HWRITE {
+		data_operations: coverpoint HWRITE {	//read or write operations
 			bins READ			= {1'b0};
 			bins WRITE			= {1'b1};
 			}
