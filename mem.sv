@@ -41,13 +41,13 @@ logic	[SLAVE_DATAWIDTH-1:0]		M[MEMDEPTH];		// memory array
 //	Datao = M[Addr];
 //end
 
-//initial
-//begin
- //for (int i=0;i<MEMDEPTH;i++)
-  //              begin
-   //                     M[i]= '0;
-   //             end
-//end
+initial
+begin
+ for (int i=0;i<MEMDEPTH;i++)
+                begin
+                        M[i]= '0;
+                end
+end
 
 
 
