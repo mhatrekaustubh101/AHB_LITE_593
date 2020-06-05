@@ -11,12 +11,12 @@
 // Portland State University                                                                                    //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-`include "AHB_Package.sv"
-`include "AHB_DECODER.sv"
-`include "AHB_MUX.sv"
-`include "AHBSEL_STORE.sv"
-`include "mem.sv"
-`include "memController.sv"
+//`include "AHB_Package.sv"
+//`include "AHB_DECODER.sv"
+//`include "AHB_MUX.sv"
+//`include "AHBSEL_STORE.sv"
+//`include "mem.sv"
+//`include "memController.sv"
 //`include "scenario_1.sv"
 
 import Definitions::*;
