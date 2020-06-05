@@ -203,14 +203,15 @@ class coverage;
 //------------------------------------------CROSS COVERAGE----------------------------------------------//
 
 		//all responses for read and write transitions must be OKAY
-		read_write_okay: cross read_write_transitions, slave_response;	
-			
+		read_write_okay: cross read_write_transitions, slave_response; /*{		
+			ignore_bins other = binsof(read_write_transitions) && binsof(slave_response.ERROR);
+			}*/
 			
 		//all burst types can have different data size from 1byte to 4bytes
 		data_size_burst: 				cross burst, data_size;			
 		
 		//cross between transfer type and read write transitions
-		rw_transitions_trans_type:		cross read_write_transitions, transfer_type;
+		//rw_transitions_trans_type:		cross read_write_transitions, transfer_type;
 		
 		
 		/*	
