@@ -20,7 +20,7 @@
 //`include "AHB_TOP.sv"
 //`include "top.sv"
 
-`include "tb_top.sv"
+//`include "tb_top.sv"
 
 import Definitions::*;
 
