@@ -8,17 +8,17 @@
 // Portland State University                                                                                    //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-`include "interface.sv"
+//`include "interface.sv"
 //`include "transaction.sv"
 
-`include "AHB_Package.sv"
-`include "AHB_DECODER.sv"
-`include "AHB_MUX.sv"
-`include "AHBSEL_STORE.sv"
-`include "mem.sv"
-`include "memController.sv"
-`include "AHB_TOP.sv"
-`include "top.sv"
+//`include "AHB_Package.sv"
+//`include "AHB_DECODER.sv"
+//`include "AHB_MUX.sv"
+//`include "AHBSEL_STORE.sv"
+//`include "mem.sv"
+//`include "memController.sv"
+//`include "AHB_TOP.sv"
+//`include "top.sv"
 
 `include "tb_top.sv"
 
